@@ -12,3 +12,4 @@ The main complete program is : Conformance_sanitise_Main_program
 
 A concept also presented in the paper is : Conformance_sanitise_v1_concept
 
+Testing for both programs was done by using the A.xes and B.xes files also available in hte repository

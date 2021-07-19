@@ -57,6 +57,7 @@ class a :
             if sum < min :
                 min = sum
                 spot = j
+        # The upper value of min can be changed here
         if min >= 0 and min< 5 :
             new_list[spot]['occurances']+=1
         else :
@@ -66,7 +67,7 @@ class a :
     for x in new_list :
         if x['occurances'] >= 5 :
             k_list.append(x)
-
+    # This part exists only to show in the console all skips that are present in the end-log, it can be commented out if they are not of interest
     cald = list()
     for x in range(len(k_list)) :
         for y in range(len(k_list[x]['alignment'])) :
@@ -78,6 +79,7 @@ class a :
     import pandas as pd
     from pm4py.objects.conversion.log import converter as log_converter
     dataframe = log_converter.apply(k_list, variant=log_converter.Variants.TO_DATA_FRAME)
+    # The target filepath can be changed here in order to tell the program where to save the sanitised log
     dataframe.to_csv(r"D:\UniMannheim\Bachelor\Event logs\Bexportedaligned.csv")
 
    

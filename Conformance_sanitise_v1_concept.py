@@ -1,26 +1,16 @@
 
 
-from pm4py.objects.log.importer.xes.importer import Variants
-
-
+#This is only a concept presented as V1 in the bachelor paper.
 class a :
     import os
     from pm4py.objects.log.importer.xes import importer as xes_importer
     from pm4py.algo.discovery.inductive import algorithm as inductive_miner
     from pm4py.algo.conformance.alignments.petri_net import algorithm as alignments
-    from pm4py.algo.conformance.alignments.petri_net.algorithm import Parameters
     from pm4py.algo.conformance.alignments.petri_net.variants.state_equation_a_star import PARAM_MODEL_COST_FUNCTION
 
 
-    # def getTuples (list1 : list) :
-    #     return_list = list()
-    #     for x in list1 :
-    #         return_list.append((x[0],x[1]))
-    #     return return_list
-
-    # def getTuple (list2 : list)
-
     print('i am starting the import')
+    # The "D:\UniMannheim\Bachelor\Event logs\B.xes" in the next line can be changed in order to show the path to the xes or csv file you want the inductive miner to run on
     log = xes_importer.apply(os.path.join("tests", "input_data", r"D:\UniMannheim\Bachelor\Event logs\B.xes"))
     print('i finished the import')
     net, initial_marking, final_marking = inductive_miner.apply(log,variant = inductive_miner.Variants.IMf, parameters={inductive_miner.Variants.IMf.value.Parameters.NOISE_THRESHOLD : 0.3})
@@ -30,10 +20,12 @@ class a :
 
     
 
-    for x in range(len(aligned_traces)) :
-        for y in reversed(range(len(aligned_traces[x]['alignment']))) :
-            if aligned_traces[x]['alignment'][y][0] == '>>' and aligned_traces[x]['alignment'][y][1] == None :
-                aligned_traces[x]['alignment'].remove(aligned_traces[x]['alignment'][y])
+    #This for can be used if one wants the None tuples present in the aligned_traces to be removed
+
+    # for x in range(len(aligned_traces)) :
+    #     for y in reversed(range(len(aligned_traces[x]['alignment']))) :
+    #         if aligned_traces[x]['alignment'][y][0] == '>>' and aligned_traces[x]['alignment'][y][1] == None :
+    #             aligned_traces[x]['alignment'].remove(aligned_traces[x]['alignment'][y])
 
 
 
@@ -88,47 +80,4 @@ class a :
     dataframe = log_converter.apply(k_list, variant=log_converter.Variants.TO_DATA_FRAME)
     dataframe.to_csv(r"D:\UniMannheim\Bachelor\Event logs\Bexportedaligned.csv")
 
-
-
-    
-
-
-
-  
-
-
-
-    # for i  in range( len(aligned_traces)) :
-    #     for j,k in range(len(aligned_traces[i]['alignment'])) :
-    #         if aligned_traces[i]['alignment'][j] == aligned_traces[i+1]['alignment'][j] :
-    #             print(aligned_traces[i]['alignment'][j])
-
-
-    #variants_count = case_statistics.get_variant_statistics(log)
-    #variants_count = sorted(variants_count, key=lambda x: x['count'], reverse=True)
-
-    # skipped_list = list()
-    # max = 0
-    # for a in range(len(aligned_traces)) :
-#     alignment_list = aligned_traces[a]['alignment']
-#     for b in alignment_list :
-#         if b[0] == '>>' or b[1] == '>>':
-#                 skipped_list.append(aligned_traces[a])
-            
-                        
-      
-        
-            # else :
-            #     for n in skipped_list :
-                   
-            #         res = len(set(n['alignment']) & set(alignment_list[a])) / float(len(set(n['alignment']) | set(aligned_traces[a]['alignment']))) *100
-            #         if res > max :
-            #             max = res
-            #     if max > 70 :
-            #         skipped_list.append(n['alignment'])
-            #     else :
-            #         skipped_list.append(alignment_list[a])
-
-            
    
-

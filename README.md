@@ -8,7 +8,7 @@ The installation on Windows happens over the command prompt and running : pip in
 
 All programming happened over Visual Code using Mini-conda python.
 
-The main complete program is : Conformance_sanitise_Main_program
+The main complete program is : Conformance_sanitise_Main_program . This also contains comments in order to make working with it easy.
 
 A concept also presented in the paper is : Conformance_sanitise_v1_concept
 
